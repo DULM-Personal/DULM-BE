@@ -25,8 +25,3 @@ class GlobalExceptionHandler {
         return ResponseEntity.status(500).body(response)
     }
 }
-
-data class ErrorResponse(
-    val status : Int,
-    val message: String
-)
