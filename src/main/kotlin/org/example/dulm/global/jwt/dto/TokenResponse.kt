@@ -1,4 +1,4 @@
-package org.example.dulm.global.jwt
+package org.example.dulm.global.jwt.dto
 
 data class TokenResponse (
     val accessToken : String,
