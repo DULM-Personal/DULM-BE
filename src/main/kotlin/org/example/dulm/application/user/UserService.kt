@@ -3,8 +3,8 @@ package org.example.dulm.application.user
 import org.example.dulm.application.user.port.`in`.UserUseCase
 import org.example.dulm.application.user.port.out.UserRepository
 import org.example.dulm.domain.user.User
-import org.example.dulm.global.error.BaseException
-import org.example.dulm.global.error.ErrorCode
+import org.example.dulm.global.error.exception.DulmException
+import org.example.dulm.global.error.exception.ErrorCode
 import org.example.dulm.presentation.user.dto.response.UserResponse
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
@@ -17,7 +17,7 @@ class UserService (
 
     override fun signUp(email: String, password: String, nickname: String): UserResponse {
         if (userRepository.findByEmail(email) != null) {
-            throw BaseException(ErrorCode.EMAIL_ALREADY_EXISTS)
+            throw DulmException(ErrorCode.EMAIL_ALREADY_EXISTS)
         }
 
         val encryptedPassword = passwordEncoder.encode(password)
@@ -30,7 +30,7 @@ class UserService (
 
     override fun getUser(id: Long): UserResponse {
         val user = userRepository.findById(id)
-            ?: throw BaseException(ErrorCode.USER_NOT_FOUND)
+            ?: throw DulmException(ErrorCode.USER_NOT_FOUND)
 
         return UserResponse.from(user)
     }
