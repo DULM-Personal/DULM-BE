@@ -1,5 +1,7 @@
 package org.example.dulm.global.error
 
+import org.example.dulm.global.error.exception.DulmException
+import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RestControllerAdvice
@@ -7,21 +9,13 @@ import org.springframework.web.bind.annotation.RestControllerAdvice
 @RestControllerAdvice
 class GlobalExceptionHandler {
 
-    @ExceptionHandler(BaseException::class)
-    fun handleBaseException(e: BaseException): ResponseEntity<ErrorResponse> {
-        val response = ErrorResponse(
-            status = e.errorCode.status,
-            message = e.errorCode.message
-        )
-        return ResponseEntity.status(e.errorCode.status).body(response)
-    }
+    @ExceptionHandler(DulmException::class)
+    fun handleException(e: DulmException): ResponseEntity<ErrorResponse> {
+        val code = e.errorCode
+        val body = ErrorResponse.from(code)
 
-    @ExceptionHandler(Exception::class)
-    fun handleException(e: Exception): ResponseEntity<ErrorResponse> {
-        val response = ErrorResponse(
-            status = 500,
-            message = "서버 오류가 발생했습니다."
-        )
-        return ResponseEntity.status(500).body(response)
+        return ResponseEntity
+            .status(code.status)
+            .body(body)
     }
 }
