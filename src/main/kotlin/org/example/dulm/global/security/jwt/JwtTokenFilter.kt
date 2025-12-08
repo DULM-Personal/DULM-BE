@@ -1,5 +1,6 @@
-package org.example.dulm.global.jwt
+package org.example.dulm.global.security.jwt
 
+import io.jsonwebtoken.ExpiredJwtException
 import io.jsonwebtoken.JwtException
 import jakarta.servlet.FilterChain
 import jakarta.servlet.http.HttpServletRequest
@@ -22,7 +23,7 @@ class JwtTokenFilter(
             try {
                 val authentication = jwtTokenProvider.authentication(it)
                 SecurityContextHolder.getContext().authentication = authentication
-            } catch (_: io.jsonwebtoken.ExpiredJwtException) {
+            } catch (_: ExpiredJwtException) {
             } catch (_: JwtException) {
             } catch (_: Exception) {
             }

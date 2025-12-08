@@ -1,4 +1,4 @@
-package org.example.dulm.domain.user
+package org.example.dulm.domain.user.domain
 
 import java.time.LocalDateTime
 

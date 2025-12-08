@@ -1,6 +1,6 @@
-package org.example.dulm.global.jwt.entity.repository
+package org.example.dulm.global.security.jwt.entity.repository
 
-import org.example.dulm.global.jwt.entity.RefreshToken
+import org.example.dulm.global.security.jwt.entity.RefreshToken
 import org.springframework.data.repository.CrudRepository
 
 interface RefreshTokenRepository : CrudRepository<RefreshToken, String> {

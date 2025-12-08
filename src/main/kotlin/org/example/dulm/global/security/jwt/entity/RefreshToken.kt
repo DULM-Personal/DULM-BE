@@ -1,4 +1,4 @@
-package org.example.dulm.global.jwt.entity
+package org.example.dulm.global.security.jwt.entity
 
 import jakarta.persistence.Id
 import org.springframework.data.redis.core.RedisHash

@@ -1,6 +1,6 @@
-package org.example.dulm.presentation.user.dto.response
+package org.example.dulm.domain.user.presentation.dto.response
 
-import org.example.dulm.domain.user.User
+import org.example.dulm.domain.user.domain.User
 
 data class UserResponse (
     val id : Long,

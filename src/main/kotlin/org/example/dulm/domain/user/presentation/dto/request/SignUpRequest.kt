@@ -1,4 +1,4 @@
-package org.example.dulm.presentation.user.dto.request
+package org.example.dulm.domain.user.presentation.dto.request
 
 import jakarta.validation.constraints.Email
 import jakarta.validation.constraints.NotBlank

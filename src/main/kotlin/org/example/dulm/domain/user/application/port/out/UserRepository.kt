@@ -1,6 +1,6 @@
-package org.example.dulm.application.user.port.out
+package org.example.dulm.domain.user.application.port.out
 
-import org.example.dulm.domain.user.User
+import org.example.dulm.domain.user.domain.User
 
 interface UserRepository {
     fun save(user: User): User

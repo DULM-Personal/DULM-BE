@@ -7,7 +7,6 @@ import io.jsonwebtoken.io.Decoders
 import io.jsonwebtoken.security.Keys
 import org.example.dulm.global.error.exception.DulmException
 import org.example.dulm.global.error.exception.ErrorCode
-import org.example.dulm.global.jwt.JwtProperties
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.Authentication
 import org.springframework.security.core.authority.SimpleGrantedAuthority
