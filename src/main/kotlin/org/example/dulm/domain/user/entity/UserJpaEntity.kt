@@ -21,7 +21,7 @@ class UserJpaEntity(
     val email: String,
 
     @Column(nullable = false)
-    val password: String,
+    val password: String?,
 
     @Column(nullable = false)
     val nickname: String,
