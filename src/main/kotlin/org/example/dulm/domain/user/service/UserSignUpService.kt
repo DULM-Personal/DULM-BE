@@ -12,12 +12,13 @@ import org.example.dulm.global.security.jwt.dto.TokenResponse
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
 
+
 @Service
-class SignUpService(
+class UserSignUpService(
     private val userRepository: UserRepository,
     private val passwordEncoder: PasswordEncoder,
-    private val jwtTokenProvider: JwtTokenProvider  // ★ 추가됨
-) : UserSignUpUseCase {
+    private val jwtTokenProvider: JwtTokenProvider
+): UserSignUpUseCase {
 
     override fun execute(request: SignUpRequest): TokenResponse {
         // 1. 이메일 중복 확인
@@ -42,10 +43,11 @@ class SignUpService(
         val access = jwtTokenProvider.createAccessToken(saved.email)
         val refresh = jwtTokenProvider.createRefreshToken(saved.email)
 
-        // 6. 토큰 응답 반환 ★ 없어서 오류났던 부분
+        // 6. 토큰 응답 반환 없어서 오류났던 부분
         return TokenResponse(
             accessToken = access,
             refreshToken = refresh
         )
     }
 }
+
