@@ -1,7 +1,6 @@
 package org.example.dulm.global.security.jwt
 
 import org.springframework.boot.context.properties.ConfigurationProperties
-import org.springframework.boot.context.properties.bind.ConstructorBinding
 
 @ConfigurationProperties("auth.jwt")
 class JwtProperties(
@@ -9,5 +8,5 @@ class JwtProperties(
     val accessExp: Long,
     val refreshExp: Long,
     val header: String,
-    val prefix: String
+    val prefix: String,
 )
