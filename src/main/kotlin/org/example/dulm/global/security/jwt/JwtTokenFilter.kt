@@ -9,24 +9,24 @@ import org.springframework.web.filter.OncePerRequestFilter
 
 class JwtTokenFilter(
     private val jwtTokenProvider: JwtTokenProvider,
-    private val jwtProperties: JwtProperties
+    private val jwtProperties: JwtProperties,
 ) : OncePerRequestFilter() {
-
     override fun doFilterInternal(
         request: HttpServletRequest,
         response: HttpServletResponse,
-        filterChain: FilterChain
+        filterChain: FilterChain,
     ) {
         val token = resolveToken(request)
 
         if (token != null && jwtTokenProvider.validateToken(token)) {
             val email = jwtTokenProvider.getEmail(token)
 
-            val authentication = UsernamePasswordAuthenticationToken(
-                email,
-                null,
-                emptyList()
-            )
+            val authentication =
+                UsernamePasswordAuthenticationToken(
+                    email,
+                    null,
+                    emptyList(),
+                )
 
             SecurityContextHolder.getContext().authentication = authentication
         }
